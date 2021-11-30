@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.namikoka.model.Pessoa;
@@ -36,10 +36,16 @@ public class PessoaController {
 		return new ResponseEntity<>(this.service.salvar(pessoaDTO), HttpStatus.CREATED);	
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping
 	public ResponseEntity<String> deletar(@PathVariable Long id) {
 		this.service.deletar(id);
 		return new ResponseEntity<>("Pessoa excluída com sucesso!", HttpStatus.OK);
+	}
+	
+	@PutMapping
+	public ResponseEntity<String> editar(@RequestBody  PessoaResponse pessoaResponse) {
+		this.service.editar(pessoaResponse);
+		return new ResponseEntity<>("Pessoa alterada com sucesso!", HttpStatus.OK);
 	}
 
 }

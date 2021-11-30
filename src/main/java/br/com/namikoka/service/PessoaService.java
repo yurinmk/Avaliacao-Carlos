@@ -32,6 +32,10 @@ public class PessoaService {
 		repository.deleteById(id);
 	}
 	
+	public void editar(PessoaResponse pessoaResponse) {
+		repository.save(new Pessoa().build(pessoaResponse));
+	}
+	
 	
 
 }

@@ -33,5 +33,15 @@ public class Pessoa {
 	
 	private String curso;
 	
+	public Pessoa build(PessoaResponse pessoaResponse) {
+		return Pessoa.builder()
+				.id(pessoaResponse.getId())
+                .nome(pessoaResponse.getNome())
+                .email(pessoaResponse.getEmail())
+                .telefone(pessoaResponse.getTelefone())
+                .curso(pessoaResponse.getCurso())
+                .build();
+	}
+	
 
 }
